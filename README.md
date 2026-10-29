@@ -6,6 +6,8 @@
 [![release](https://img.shields.io/github/v/release/wzww886/qqbot-bridge?label=release)](https://github.com/wzww886/qqbot-bridge/releases)
 [![platform](https://img.shields.io/badge/platform-Android%20%7C%20Linux-lightgrey.svg)](docs/04-adaptation.md)
 
+> **qqbot-bridge** — run an official QQ bot on an Android phone via a Magisk / KernelSU module **instead of renting a server**. Any OpenAI-compatible LLM (DeepSeek / Qwen / Kimi / Ollama), with persona memory, human-like segmented replies, sticker picking, proactive messages and watchdog self-healing. 不需要服务器：用 Magisk 模块 + 旧手机跑 QQ 机器人。
+
 **用一部手机 + 一个 Magisk 模块，代替一台服务器，跑一个有人格的 QQ 机器人。**
 
 不租云主机、不买 VPS：机器人塞进 Magisk / KernelSU 模块里，跟着开机自启、进程挂了自动拉起、日志自己轮转。手机本来就 7×24 插着电，算力白放着也是白放着。
