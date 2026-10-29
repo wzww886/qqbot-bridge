@@ -1,0 +1,6 @@
+id=qqbot_bridge
+name=QQ Bot Bridge (DeepSeek 鲸娘)
+version=v2.1.0
+versionCode=210
+author=your-github-name
+description=把 QQ 官方机器人接到任意 OpenAI 兼容大模型：拟人记忆、表情包、主动消息、多段回复。需自备 Node 运行时。
