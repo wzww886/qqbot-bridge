@@ -1,0 +1,56 @@
+{
+  "name": "qqbot-bridge",
+  "version": "2.1.0",
+  "description": "Bring an official QQ bot to life: persona memory, multi-segment human-like replies, sticker picking, proactive messages and watchdog self-healing on top of any OpenAI-compatible LLM.",
+  "type": "module",
+  "license": "MIT",
+  "private": false,
+  "engines": {
+    "node": ">=20"
+  },
+  "keywords": [
+    "qqbot",
+    "qq-bot",
+    "qq-official-bot",
+    "deepseek",
+    "openai-compatible",
+    "llm",
+    "persona",
+    "chatbot",
+    "magisk-module",
+    "kernelsu",
+    "android",
+    "termux"
+  ],
+  "homepage": "https://github.com/wzww886/qqbot_bridge_oss#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wzww886/qqbot_bridge_oss.git"
+  },
+  "bugs": {
+    "url": "https://github.com/wzww886/qqbot_bridge_oss/issues"
+  },
+  "main": "src/bridge.mjs",
+  "files": [
+    "src",
+    "module",
+    "scripts",
+    "config",
+    "docs",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "start": "node src/bridge.mjs",
+    "status": "node src/qq.js st",
+    "inbox": "node src/qq.js inbox",
+    "check": "node --check src/bridge.mjs && node --check src/ai.mjs && node --check src/qq.js",
+    "pack": "sh scripts/build-module.sh",
+    "publish:repo": "node scripts/publish.mjs"
+  },
+  "dependencies": {
+    "@tencent-connect/qqbot-nodejs": "1.0.5",
+    "ws": "8.21.0"
+  }
+}
