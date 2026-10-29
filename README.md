@@ -1,19 +1,39 @@
 # qqbot-bridge
 
+<p align="center">
+  <a href="https://github.com/wzww886/qqbot-bridge">
+    <img src="docs/preview.jpg" alt="qqbot-bridge — turn an old Android phone into a self-hosted QQ AI bot" width="880">
+  </a>
+</p>
+
 [![version](https://img.shields.io/badge/version-2.1.0-blue.svg)](CHANGELOG.md)
 [![license](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![node](https://img.shields.io/badge/node-%E2%89%A520-brightgreen.svg)](https://nodejs.org)
 [![release](https://img.shields.io/github/v/release/wzww886/qqbot-bridge?label=release)](https://github.com/wzww886/qqbot-bridge/releases)
 [![platform](https://img.shields.io/badge/platform-Android%20%7C%20Linux-lightgrey.svg)](docs/04-adaptation.md)
 
-> **qqbot-bridge** — run an official QQ bot on an Android phone via a Magisk / KernelSU module **instead of renting a server**. Any OpenAI-compatible LLM (DeepSeek / Qwen / Kimi / Ollama), with persona memory, human-like segmented replies, sticker picking, proactive messages and watchdog self-healing. 不需要服务器：用 Magisk 模块 + 旧手机跑 QQ 机器人。
+**Turn an old Android phone into a self-hosted QQ AI bot — no VPS required.**
+**用一台闲置安卓手机，跑一个属于自己的 QQ AI 机器人。**
 
-**用一部手机 + 一个 Magisk 模块，代替一台服务器，跑一个有人格的 QQ 机器人。**
+qqbot-bridge 把 **QQ 官方机器人**接入 **OpenAI 兼容的大模型**，并通过 **Magisk / KernelSU 模块**在 Android 设备上常驻运行。不租云主机、不买 VPS：机器人塞进模块里，跟着开机自启、进程挂了自动拉起、日志自己轮转。手机本来就 7×24 插着电，算力白放着也是白放着。
 
-不租云主机、不买 VPS：机器人塞进 Magisk / KernelSU 模块里，跟着开机自启、进程挂了自动拉起、日志自己轮转。手机本来就 7×24 插着电，算力白放着也是白放着。
+- 📱 **No VPS required** — 复用闲置手机，减少额外服务器开销
+- 🧠 **Persistent persona memory** — 保留对话中的个性与记忆
+- 💬 **Natural chat experience** — 分条回复、情绪表情包、主动消息
+- 🔄 **Automatic recovery** — 看门狗监测与进程恢复
+- 🔌 **Model flexibility** — 接入兼容 OpenAI API 的模型服务
 
-把 **QQ 官方机器人**接到任意 **OpenAI 兼容大模型**（DeepSeek / 通义 / Kimi / 本地 Ollama 都行），
-补上官方 SDK 没给你的那部分：**人格记忆、分条回复、表情包、主动消息、看门狗自愈**。
+## Quick Start
+
+1. Download the latest stable module from **[Releases](https://github.com/wzww886/qqbot-bridge/releases/latest)**.
+2. Check the [device requirements](docs/04-adaptation.md) and prepare the Node.js runtime.
+3. Configure your QQ bot credentials and model API settings.
+4. Start the bridge and verify that your bot can reply.
+
+> **Requirements**：rooted Android device（模块部署）、Magisk 或 KernelSU、可用的 Node.js 运行时、QQ 机器人凭证，以及可访问的 LLM API。
+> PC / server deployment is also supported — see the [deployment guide](docs/02-deploy.md).
+
+> **Note**：root 权限、模型 API 用量与设备耗电仍可能产生成本或风险。本项目减少的是「单独租一台 VPS」的必要性，不承诺零运营成本。
 
 > 形态说明：**「Magisk 模块顶替服务器」是本项目最初的出发点**（2025 年起自用在一台旧手机上），不是事后补的部署方式。代码纯 Node ESM，同一份代码也能直接跑在 PC / 服务器上。
 
@@ -46,7 +66,7 @@
 | 🎛️ 全参数可调 | 路径、端口、模型、延迟、概率、限流、免打扰……全在 JSON 里 |
 | 🧩 零依赖部署 | 运行时不内置，从 Termux 复制或自编译，多架构通用 |
 
-## 快速开始
+## 安装细节（手动）
 
 模块包：**[Releases 下载 `qqbot_bridge-v2.1.0.zip`](https://github.com/wzww886/qqbot-bridge/releases/latest)**，Magisk / KernelSU 直接刷，或解压到 `/data/adb/modules/qqbot_bridge`。
 
