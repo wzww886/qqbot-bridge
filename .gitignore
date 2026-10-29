@@ -1,0 +1,28 @@
+# 真实配置与密钥，绝不入库
+config.json
+ai.json
+persona.md
+proactive.json
+*.local.json
+
+# 运行时产物
+log/
+memory/
+diary/
+profile/
+inbox.jsonl
+agent_state.json
+proactive_state.json
+*.log
+*.bak
+build/
+
+# 表情包（版权原因不入库，用 scripts/import-stickers.sh 自己导入）
+stickers/
+node_modules/.cache/
+
+# 系统杂项
+.DS_Store
+Thumbs.db
+*.zip
+!dist/*.zip
