@@ -1,5 +1,11 @@
 # QQ Bot Bridge · 让 QQ 机器人真的“像个人”
 
+[![version](https://img.shields.io/badge/version-2.1.0-blue.svg)](CHANGELOG.md)
+[![license](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![node](https://img.shields.io/badge/node-%E2%89%A520-brightgreen.svg)](https://nodejs.org)
+[![release](https://img.shields.io/github/v/release/wzww886/qqbot_bridge_oss?label=release)](https://github.com/wzww886/qqbot_bridge_oss/releases)
+[![platform](https://img.shields.io/badge/platform-Android%20%7C%20Linux-lightgrey.svg)](docs/04-adaptation.md)
+
 把 **QQ 官方机器人**接到任意 **OpenAI 兼容大模型**（DeepSeek / 通义 / Kimi / 本地 Ollama 都行），
 补上官方 SDK 没给你的那部分：**人格记忆、分条回复、表情包、主动消息、看门狗自愈**。
 
@@ -22,6 +28,8 @@
 
 ## 快速开始
 
+模块包：**[Releases 下载 `qqbot_bridge-v2.1.0.zip`](https://github.com/wzww886/qqbot_bridge_oss/releases/latest)**，Magisk / KernelSU 直接刷，或解压到 `/data/adb/modules/qqbot_bridge`。
+
 ```bash
 # 1. 放到设备上（需 root）
 unzip qqbot_bridge-v2.1.0.zip -d /data/adb/modules/qqbot_bridge   # 或手动拷
@@ -36,6 +44,23 @@ vi /data/adb/qqbot_bridge/app/config.json                    # QQ appId / appSec
 # 4. 起来
 sh /data/adb/qqbot_bridge/watchdog.sh &
 sh /data/adb/qqbot_bridge/qq.sh st
+```
+
+## 在 PC / 服务器上跑（不用 Magisk）
+
+```bash
+git clone https://github.com/wzww886/qqbot_bridge_oss.git
+cd qqbot_bridge_oss
+npm install                      # 依赖：@tencent-connect/qqbot-nodejs + ws
+cp config/ai.example.json       ~/.config/qqbot/ai.json
+cp config/config.example.json   ~/.config/qqbot/config.json
+QQBRIDGE_ROOT=$PWD QQBRIDGE_STATE=~/.config/qqbot npm start
+```
+
+打模块包（任意有 node 的机器，不需要 `zip` 命令）：
+
+```bash
+npm run pack        # → dist/qqbot_bridge-v2.1.0.zip
 ```
 
 ## 目录结构
