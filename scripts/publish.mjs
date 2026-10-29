@@ -21,7 +21,8 @@ const HEAD = {
 const IGNORE = new Set([".git", "node_modules", ".DS_Store", "Thumbs.db"]);
 function walk(dir, base = dir, acc = []) {
   for (const n of readdirSync(dir)) {
-    if (IGNORE.has(n)) continue;
+    // 日志、备份、临时文件不入库
+    if (IGNORE.has(n) || /\.(log|bak|tmp|zip\.tmp)$/i.test(n)) continue;
     const p = join(dir, n), rel = relative(base, p).replace(/\\/g, "/");
     if (statSync(p).isDirectory()) walk(p, base, acc); else acc.push({ p, rel });
   }
