@@ -1,7 +1,7 @@
 {
   "name": "qqbot-bridge",
   "version": "2.1.0",
-  "description": "Bring an official QQ bot to life: persona memory, multi-segment human-like replies, sticker picking, proactive messages and watchdog self-healing on top of any OpenAI-compatible LLM.",
+  "description": "Run an official QQ bot on an old phone instead of paying for a server: a Magisk / KernelSU module with persona memory, human-like segmented replies, stickers, proactive messages and watchdog self-healing, powered by any OpenAI-compatible LLM.",
   "type": "module",
   "license": "MIT",
   "private": false,
