@@ -1,0 +1,15 @@
+{
+  "enabled": true,
+  "idleMin": 120,
+  "minGapMin": 240,
+  "maxPerDay": 3,
+  "quietHours": {
+    "start": "00:30",
+    "end": "08:00"
+  },
+  "target": {
+    "scope": "c2c",
+    "targetId": ""
+  },
+  "senderName": "父亲"
+}
