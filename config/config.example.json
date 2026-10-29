@@ -1,0 +1,7 @@
+{
+  "_readme": "appId/appSecret 从 QQ 开放平台机器人后台获取。stateDir 留空则用默认插件目录。",
+  "appId": "",
+  "appSecret": "",
+  "port": 32146,
+  "stateDir": ""
+}
