@@ -1,0 +1,61 @@
+{
+  "_readme": "所有字段说明见 docs/03-config.md。改完不用重启：POST /ai/reload 即可热加载。",
+  "enabled": false,
+  "provider": "deepseek",
+  "baseUrl": "https://api.deepseek.com/v1",
+  "apiKey": "",
+  "model": "deepseek-v4-pro",
+  "groupModel": "deepseek-flash",
+  "groupMaxTokens": 400,
+  "groupTemperature": 0,
+  "temperature": 1.3,
+  "maxTokens": 900,
+  "effort": "low",
+  "timeoutMs": 60000,
+  "personaFile": "persona.md",
+  "stickerDir": "",
+  "ownerIds": [],
+  "contextTurns": 20,
+  "summaryEvery": 0,
+  "maxPromptChars": 6000,
+  "memory": {
+    "summaryChars": 600,
+    "compressEvery": 12,
+    "factsLimit": 40,
+    "recall": 3,
+    "rulesLimit": 20,
+    "diary": true
+  },
+  "reply": {
+    "maxSegments": 3,
+    "minSegments": 2,
+    "maxCharsPerSegment": 55,
+    "stripTrailingPunctuation": true,
+    "delay": {
+      "min": 350,
+      "perChar": 40,
+      "max": 2000
+    },
+    "privateAlways": true,
+    "privateProbability": 1,
+    "groupMode": "mention",
+    "groupKeywords": ["鱼", "鲸", "白饭", "喂", "机器人"],
+    "groupProbability": 0.3,
+    "groupCooldownSec": 120,
+    "quoteReply": true,
+    "stripMarkdown": true,
+    "forbidAIClaim": true,
+    "maxRepliesPerMinute": 10,
+    "sticker": {
+      "enabled": false,
+      "probability": 0.4,
+      "delayMs": 700
+    }
+  },
+  "quietHours": {
+    "enabled": true,
+    "start": "01:30",
+    "end": "07:30",
+    "privateStillReply": true
+  }
+}
