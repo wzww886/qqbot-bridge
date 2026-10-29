@@ -86,6 +86,19 @@ const stickerDir = () => String(cfg().stickerDir || "") || join(stateDir, "stick
 - 系统没有 `zip`，所以写了个零依赖 ZIP 打包器 `scripts/pack.mjs`
 - 模块脚本统一 `MODDIR` 探测，兼容 `/data/adb/qqbot_bridge` 与 `/data/adb/modules/qqbot_bridge`
 
+## 关于定位：为什么不用服务器
+
+这项目最早不是「部署方式之一」，而是起点——一台吃灰的旧手机 + 一个 Magisk 模块，把它变成 7×24 常驻的机器人，替掉每月几十块的云主机。
+
+- 手机不需要新硬件，本来就插着电开着机
+- 模块 `service.sh` 原生接管开机自启，比在 Android 上折腾 systemd 靠谱
+- 有 root 就能管后台、电池白名单、通知栏，不必自己写守护进程
+- 数据全在本机 `/data/adb`，不落在别人硬盘上；迁移 = 换机刷模块
+
+代价：要 root、要自备 Node 运行时、单机算力有限（所以群聊走快模型、私聊走好模型）。
+
+同一份代码在 PC 上 `npm start` 也能跑，但主线始终是**模块形态**。
+
 ## 设计取舍备忘
 
 | 取舍 | 原因 |
