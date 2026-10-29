@@ -3,7 +3,7 @@
 [![version](https://img.shields.io/badge/version-2.1.0-blue.svg)](CHANGELOG.md)
 [![license](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![node](https://img.shields.io/badge/node-%E2%89%A520-brightgreen.svg)](https://nodejs.org)
-[![release](https://img.shields.io/github/v/release/wzww886/qqbot_bridge_oss?label=release)](https://github.com/wzww886/qqbot_bridge_oss/releases)
+[![release](https://img.shields.io/github/v/release/wzww886/qqbot-bridge?label=release)](https://github.com/wzww886/qqbot-bridge/releases)
 [![platform](https://img.shields.io/badge/platform-Android%20%7C%20Linux-lightgrey.svg)](docs/04-adaptation.md)
 
 **用一部手机 + 一个 Magisk 模块，代替一台服务器，跑一个有人格的 QQ 机器人。**
@@ -46,7 +46,7 @@
 
 ## 快速开始
 
-模块包：**[Releases 下载 `qqbot_bridge-v2.1.0.zip`](https://github.com/wzww886/qqbot_bridge_oss/releases/latest)**，Magisk / KernelSU 直接刷，或解压到 `/data/adb/modules/qqbot_bridge`。
+模块包：**[Releases 下载 `qqbot_bridge-v2.1.0.zip`](https://github.com/wzww886/qqbot-bridge/releases/latest)**，Magisk / KernelSU 直接刷，或解压到 `/data/adb/modules/qqbot_bridge`。
 
 ```bash
 # 1. 放到设备上（需 root）
@@ -67,8 +67,8 @@ sh /data/adb/qqbot_bridge/qq.sh st
 ## 在 PC / 服务器上跑（不用 Magisk）
 
 ```bash
-git clone https://github.com/wzww886/qqbot_bridge_oss.git
-cd qqbot_bridge_oss
+git clone https://github.com/wzww886/qqbot-bridge.git
+cd qqbot-bridge
 npm install                      # 依赖：@tencent-connect/qqbot-nodejs + ws
 cp config/ai.example.json       ~/.config/qqbot/ai.json
 cp config/config.example.json   ~/.config/qqbot/config.json
