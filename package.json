@@ -22,13 +22,13 @@
     "android",
     "termux"
   ],
-  "homepage": "https://github.com/wzww886/qqbot_bridge_oss#readme",
+  "homepage": "https://github.com/wzww886/qqbot-bridge#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wzww886/qqbot_bridge_oss.git"
+    "url": "git+https://github.com/wzww886/qqbot-bridge.git"
   },
   "bugs": {
-    "url": "https://github.com/wzww886/qqbot_bridge_oss/issues"
+    "url": "https://github.com/wzww886/qqbot-bridge/issues"
   },
   "main": "src/bridge.mjs",
   "files": [
