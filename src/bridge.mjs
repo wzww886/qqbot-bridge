@@ -1,13 +1,14 @@
 // bridge.mjs v2 — QQ Bot <-> AI 闭环
 import { QQBot } from "@tencent-connect/qqbot-nodejs";
 import { createServer } from "node:http";
-import { appendFileSync, readFileSync, writeFileSync, mkdirSync, existsSync } from "node:fs";
+import { appendFileSync, readFileSync, writeFileSync, mkdirSync, existsSync, copyFileSync } from "node:fs";
 import { createAiEngine } from "./ai.mjs";
 
 import { dirname, join } from "node:path";
 
 // ---- 路径全部可覆盖：环境变量 > config.json > 默认值 ----
-const DEFAULT_STATE = "/storage/emulated/0/Download/Operit/plugins/qqbot_bridge";
+const DEFAULT_STATE = "/data/adb/qqbot_bridge_data";
+const LEGACY_STATE = "/storage/emulated/0/Download/Operit/plugins/qqbot_bridge";
 const ROOT = process.env.QQBRIDGE_ROOT || "/data/adb/qqbot_bridge";
 
 const CFG_CANDIDATES = [
@@ -15,12 +16,13 @@ const CFG_CANDIDATES = [
   process.env.QQBRIDGE_STATE && process.env.QQBRIDGE_STATE + "/config.json",
   DEFAULT_STATE + "/config.json",
   ROOT + "/app/config.json",
+  LEGACY_STATE + "/config.json",
 ].filter(Boolean);
 const cfgPath = CFG_CANDIDATES.find((p) => existsSync(p));
 if (!cfgPath) { console.error("no config.json found, tried:\n  " + CFG_CANDIDATES.join("\n  ")); process.exit(1); }
 const CFG = JSON.parse(readFileSync(cfgPath, "utf8"));
 
-const STATE = process.env.QQBRIDGE_STATE || CFG.stateDir || dirname(cfgPath);
+const STATE = process.env.QQBRIDGE_STATE || CFG.stateDir || DEFAULT_STATE;
 mkdirSync(STATE, { recursive: true });
 
 const INBOX = STATE + "/inbox.jsonl";
@@ -28,6 +30,15 @@ const PORT = Number(process.env.QQBRIDGE_PORT || CFG.port || 32146);
 const startedAt = Date.now();
 const stats = { running: true, connected: false, events: 0, lastError: "", lastEventAt: 0, sessionId: "", botInfo: null, reconnects: 0 };
 const log = (...a) => console.log(`[${new Date().toISOString()}]`, ...a);
+// 老用户兜底：旧版默认目录（Operit 插件目录）里有配置就补搬过来，只补缺失、不覆盖
+if (STATE !== LEGACY_STATE && existsSync(LEGACY_STATE)) {
+  for (const f of ["ai.json", "persona.md", "proactive.json", "stickers.json"]) {
+    try {
+      const from = join(LEGACY_STATE, f), to = join(STATE, f);
+      if (existsSync(from) && !existsSync(to)) { copyFileSync(from, to); log("migrated", f, "from legacy dir"); }
+    } catch {}
+  }
+}
 
 const bot = new QQBot({
   appId: CFG.appId,
