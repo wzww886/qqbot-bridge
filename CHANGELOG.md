@@ -2,7 +2,7 @@
 
 ## v2.1.0
 ### 变更
-- **默认数据目录改为 `/data/adb/qqbot_bridge_data`**：不再默认指向 `Operit` 插件目录（没装 Operit 的设备根本不会存在那个路径）。旧目录里的 `ai.json` / `persona.md` / `proactive.json` / `stickers.json` 在启动时自动迁移，只补缺失、不覆盖已有文件；`config.json` 仍兼容旧路径。
+- **默认数据目录改为 `/data/adb/qqbot_bridge_data`**：不再默认指向 `Operit` 插件目录（没装 Operit 的设备根本不会存在那个路径）。全新安装直接使用新目录；老设备若旧目录里已有 `ai.json` 则**自动沿用旧目录**（避免 memory / inbox 历史丢失），可用 `QQBRIDGE_STATE` 手动切换；旧路径 `config.json` 仍作兜底候选。
 ### 新增
 - `groupModel`：群聊独立模型（默认 `deepseek-flash`），私聊仍用主模型，群聊首字延迟从 ~4.7s 降到 ~3.4s
 - `groupMaxTokens` / `groupTemperature` / `groupEffort`：群聊独立采样参数
