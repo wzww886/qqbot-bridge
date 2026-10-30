@@ -62,7 +62,7 @@ vi /data/adb/qqbot_bridge/app/config.json
 # {"appId":"你的","appSecret":"你的","port":32146,"stateDir":""}
 
 # 模型与行为
-vi /sdcard/Download/Operit/plugins/qqbot_bridge/ai.json
+vi /data/adb/qqbot_bridge_data/ai.json
 # baseUrl / apiKey / model / ownerIds 这四项必须改
 ```
 
