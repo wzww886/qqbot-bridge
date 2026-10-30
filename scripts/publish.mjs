@@ -30,10 +30,22 @@ function walk(dir, base = dir, acc = []) {
 }
 
 async function api(path, method = "GET", body) {
-  const r = await fetch(API + path, { method, headers: HEAD, body: body ? JSON.stringify(body) : undefined });
-  const t = await r.text();
-  let j = null; try { j = JSON.parse(t); } catch {}
-  return { ok: r.ok, status: r.status, data: j, text: t };
+  let lastErr;
+  for (let attempt = 1; attempt <= 3; attempt++) {
+    try {
+      const r = await fetch(API + path, { method, headers: HEAD, body: body ? JSON.stringify(body) : undefined });
+      const t = await r.text();
+      let j = null; try { j = JSON.parse(t); } catch {}
+      return { ok: r.ok, status: r.status, data: j, text: t };
+    } catch (e) {
+      lastErr = e;
+      if (attempt < 3) {
+        console.log(`  ! 网络错误（${e.cause?.code || e.message}），第 ${attempt} 次重试…`);
+        await new Promise((r) => setTimeout(r, 1500 * attempt));
+      }
+    }
+  }
+  throw lastErr;
 }
 
 // 1) 仓库是否存在
