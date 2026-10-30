@@ -22,7 +22,13 @@ const cfgPath = CFG_CANDIDATES.find((p) => existsSync(p));
 if (!cfgPath) { console.error("no config.json found, tried:\n  " + CFG_CANDIDATES.join("\n  ")); process.exit(1); }
 const CFG = JSON.parse(readFileSync(cfgPath, "utf8"));
 
-const STATE = process.env.QQBRIDGE_STATE || CFG.stateDir || DEFAULT_STATE;
+let STATE = process.env.QQBRIDGE_STATE || CFG.stateDir || DEFAULT_STATE;
+// 老用户兼容：旧默认目录里已经有 ai.json 就沿用旧目录，避免 memory / inbox 会话历史丢失；
+// 全新设备没有这个目录，直接走 DEFAULT_STATE，不再依赖任何第三方 App 的路径。
+if (!process.env.QQBRIDGE_STATE && !CFG.stateDir
+    && !existsSync(join(DEFAULT_STATE, "ai.json")) && existsSync(join(LEGACY_STATE, "ai.json"))) {
+  STATE = LEGACY_STATE;
+}
 mkdirSync(STATE, { recursive: true });
 
 const INBOX = STATE + "/inbox.jsonl";
@@ -30,6 +36,7 @@ const PORT = Number(process.env.QQBRIDGE_PORT || CFG.port || 32146);
 const startedAt = Date.now();
 const stats = { running: true, connected: false, events: 0, lastError: "", lastEventAt: 0, sessionId: "", botInfo: null, reconnects: 0 };
 const log = (...a) => console.log(`[${new Date().toISOString()}]`, ...a);
+if (STATE === LEGACY_STATE) log("note: legacy state dir in use:", STATE, "(set QQBRIDGE_STATE to move)");
 // 老用户兜底：旧版默认目录（Operit 插件目录）里有配置就补搬过来，只补缺失、不覆盖
 if (STATE !== LEGACY_STATE && existsSync(LEGACY_STATE)) {
   for (const f of ["ai.json", "persona.md", "proactive.json", "stickers.json"]) {
