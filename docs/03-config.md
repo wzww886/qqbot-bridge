@@ -9,7 +9,7 @@
 | `appId` | string | — | QQ 开放平台机器人 AppID |
 | `appSecret` | string | — | QQ 开放平台 AppSecret（**别提交到仓库**） |
 | `port` | number | 32146 | 本地 HTTP API 端口，仅监听 127.0.0.1 |
-| `stateDir` | string | 空 | 数据目录，留空用 `/sdcard/Download/Operit/plugins/qqbot_bridge` |
+| `stateDir` | string | 空 | 数据目录，留空用 `/data/adb/qqbot_bridge_data` |
 
 ## 二、ai.json（行为层，放 `stateDir`）
 
