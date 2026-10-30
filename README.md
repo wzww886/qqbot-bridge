@@ -78,7 +78,7 @@ unzip qqbot_bridge-v2.1.0.zip -d /data/adb/modules/qqbot_bridge   # 或手动拷
 sh /data/adb/qqbot_bridge/scripts/fetch-runtime.sh
 
 # 3. 填配置
-vi /sdcard/Download/Operit/plugins/qqbot_bridge/ai.json      # 模型 key
+vi /data/adb/qqbot_bridge_data/ai.json      # 模型 key
 vi /data/adb/qqbot_bridge/app/config.json                    # QQ appId / appSecret
 
 # 4. 起来
