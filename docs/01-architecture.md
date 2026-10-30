@@ -60,7 +60,7 @@
 
 ## 数据目录
 
-默认 `stateDir = /sdcard/Download/Operit/plugins/qqbot_bridge`（`config.json` 可改）：
+默认 `stateDir = /data/adb/qqbot_bridge_data`（`config.json` 可改）：
 
 ```
 ai.json            模型与行为配置
