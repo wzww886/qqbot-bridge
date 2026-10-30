@@ -1,10 +1,10 @@
 #!/system/bin/sh
 # 一键安装到 /data/adb/qqbot_bridge（需 root）
-# 用法：sh scripts/install.sh [数据目录]
+# 用法：sh scripts/install.sh [模块目录] [数据目录]
 set -e
 SRC=$(cd "$(dirname "$0")/.." && pwd)
 DATA=${1:-/data/adb/qqbot_bridge}
-STATE=/sdcard/Download/Operit/plugins/qqbot_bridge
+STATE=${2:-/data/adb/qqbot_bridge_data}
 
 [ "$(id -u)" = "0" ] || { echo "需要 root"; exit 1; }
 
