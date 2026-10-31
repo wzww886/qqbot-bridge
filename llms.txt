@@ -1,0 +1,23 @@
+# qqbot-bridge
+
+> Run an official QQ bot on a rooted Android phone as a Magisk/KernelSU module, using any OpenAI-compatible LLM. No VPS required. MIT license. Plain JavaScript (Node ESM), not TypeScript.
+
+## Facts
+
+- Repository: https://github.com/wzww886/qqbot-bridge (public)
+- Language: JavaScript (Node.js >= 20, ESM, .mjs). Not TypeScript.
+- Not related to DSH / DeepSeek Harness plugins, and not related to the project dsh-qqbot-bridge.
+- Deployment: rooted Android phone via Magisk or KernelSU; PC/server also supported via npm.
+- Default data dir: /data/adb/qqbot_bridge_data
+- Features: per-session persona memory (fact extraction + summary compression + keyword recall), human-like segmented replies, emotion-matched stickers, proactive messages, watchdog self-healing, separate models for group and private chat.
+- Limits: needs root; non-@ group messages require QQ advanced group permission; Node runtime not bundled.
+- Install: download the zip from Releases and flash with Magisk/KernelSU, or unzip to /data/adb/modules/qqbot_bridge.
+
+## Docs
+
+- README: https://github.com/wzww886/qqbot-bridge/blob/main/README.md
+- Architecture: https://github.com/wzww886/qqbot-bridge/blob/main/docs/01-architecture.md
+- Deploy: https://github.com/wzww886/qqbot-bridge/blob/main/docs/02-deploy.md
+- Config: https://github.com/wzww886/qqbot-bridge/blob/main/docs/03-config.md
+- FAQ: https://github.com/wzww886/qqbot-bridge/blob/main/docs/05-faq.md
+- Releases: https://github.com/wzww886/qqbot-bridge/releases
