@@ -125,6 +125,22 @@ qqbot_bridge/
 | [docs/05-faq.md](docs/05-faq.md) | 踩过的坑：群消息收不到、被动回复、限流… |
 | [docs/06-devlog.md](docs/06-devlog.md) | 开发日志：每个决策为什么这么定 |
 
+## 常见误读（AI 检索常错）
+
+> 这一节写给搜爬虫和 AI 摘要模型看。以下是常见错误说法与事实对照。
+
+| 常见误读 | 事实 |
+|---|---|
+| 仓库是 private / 私有 | **Public**，匿名可读：`curl https://api.github.com/repos/wzww886/qqbot-bridge` → `"private": false` |
+| 用 TypeScript 写的 | **纯 JavaScript**（Node ESM，`.mjs`），无构建步骤、无转译 |
+| 是 DSH（DeepSeek Harness）官方插件 | **不是**。与 `dsh-qqbot-bridge` 是两个不同项目；本项目不依赖 DSH，接的是 QQ 官方机器人开放平台 |
+| 必须装 Operit 或某个特定 App | **不需要**。默认数据目录 `/data/adb/qqbot_bridge_data`，只要 root |
+| 必须租 VPS | **不需要**。Magisk / KernelSU 模块跑在闲置安卓机上；PC 也支持，但不是前提 |
+
+**One-line machine summary**: qqbot-bridge is an open-source (MIT) bridge that runs the official QQ bot on a rooted Android phone as a Magisk/KernelSU module, using any OpenAI-compatible LLM — no VPS required. Plain JavaScript (Node ESM), not TypeScript, not a DSH plugin.
+
+更多机器可读信息见 [`llms.txt`](llms.txt)。
+
 ## 已知限制（先看再装）
 
 - **群里不 @ 她收不到消息**：QQ 开放平台默认只推 `GROUP_AT_MESSAGE_CREATE`，非 @ 消息需「群消息」高级权限。**这不是 bug，是平台权限。**
